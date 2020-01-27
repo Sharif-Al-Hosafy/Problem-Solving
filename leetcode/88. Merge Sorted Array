@@ -1,0 +1,21 @@
+nums1 = [1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0];
+nums2 = [2, 5, 6];
+var merge = function(nums1, m, nums2, n) {
+  nums1.length = m + n - 1;
+  let j = m;
+  let temp;
+  for (let i = 0; i < nums2.length; i++, j++) nums1[j] = nums2[i];
+
+  for (let i = m; i < nums1.length; i++) {
+    j = i;
+    temp = nums1[j];
+    while (temp < nums1[j - 1]) {
+      nums1[j] = nums1[j - 1];
+      j--;
+    }
+    nums1[j] = temp;
+  }
+  return nums1;
+};
+
+console.log(merge(nums1, 3, nums2, 3));
